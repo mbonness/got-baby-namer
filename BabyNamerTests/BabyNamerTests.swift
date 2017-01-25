@@ -28,12 +28,12 @@ class BabyNamerTests: XCTestCase {
         XCTAssert(babyName != nil)
         XCTAssert(babyName!.getName() != nil)
         XCTAssert(babyName!.getName()!.characters.count > 0);
-        XCTAssert(isPascalCase(s: name!))
+        XCTAssert(isCapitalized(s: name!))
         XCTAssert(babyName!.getGender() != nil)
         XCTAssert(babyName!.getGender()! == Gender.Male)
     }
     
-    func isPascalCase(s: String) -> Bool {
+    func isCapitalized(s: String) -> Bool {
         let pattern = "[A-Z][a-z]+"
         let regex = try! NSRegularExpression(pattern: pattern, options: [])
         let numberOfMatches = regex.numberOfMatches(in: s, options: [], range: NSRange(location: 0, length: s.characters.count))
