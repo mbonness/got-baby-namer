@@ -11,9 +11,14 @@ import XCTest
 
 class BabyNamerTests: XCTestCase {
     
+    var vc: ViewController!
+    var bName: BabyNamerTests!
+    
     override func setUp() {
-        super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        vc = storyboard.instantiateInitialViewController() as! ViewController
     }
     
     override func tearDown() {

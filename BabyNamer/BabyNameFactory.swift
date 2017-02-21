@@ -25,6 +25,45 @@ class BabyNameFactory {
     
     func generateNameForGender(gender: Gender) -> BabyName? {
         // code here to randomly select name for specified gender
+        var f = 0, i = 0, m = 0, ind = 0
+        for bn in babyNames {
+            if bn.gender == .Male {
+                m += 1
+            } else if bn.gender == .Female {
+                f += 1
+            }
+        }
+        
+        switch gender {
+            
+        case .Male:
+            let index = Int(arc4random_uniform(UInt32(m)))
+            for bn in babyNames {
+                if bn.gender == .Male {
+                    if(i == index) {
+                        return BabyName.init(name: babyNames[ind].getName()!, gender: babyNames[ind].getGender()!)
+                    }
+                    i += 1
+                }
+                ind += 1
+            }
+            break
+        case .Female:
+            let index = Int(arc4random_uniform(UInt32(f)))
+            for bn in babyNames {
+                if bn.gender == .Female {
+                    if(i == index) {
+                        return BabyName.init(name: babyNames[ind].getName()!, gender: babyNames[ind].getGender()!)
+                    }
+                    i += 1
+                }
+                ind += 1
+            }
+            break
+        case .Unknown:
+            return nil
+
+        }
         return nil
     }
 }
